@@ -2,25 +2,33 @@ package com.ckaradimitriou.pharmacyapp.ui.dashboard;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.ckaradimitriou.pharmacyapp.R;
+import com.ckaradimitriou.pharmacyapp.databinding.ActivityDashboardBinding;
 
 public class DashboardActivity extends AppCompatActivity {
+
+    private ActivityDashboardBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_dashboard);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding = ActivityDashboardBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        /*
+         * FIXME: To be added:
+         *
+         * - Cart imageview & text should be clickable and it will trigger the CartActivity.
+         * - Profile imageview should be clickable and it will trigger the ProfileActivity.
+         *
+         */
     }
 }

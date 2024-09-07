@@ -1,5 +1,6 @@
 package com.ckaradimitriou.pharmacyapp.ui.register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityRegisterBinding;
+import com.ckaradimitriou.pharmacyapp.ui.dashboard.DashboardActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,26 +37,25 @@ public class RegisterActivity extends AppCompatActivity {
         binding.createAccountBtn.setOnClickListener(view -> {
             String email = binding.emailEditTxt.getText().toString();
             String password = binding.passwordEditTxt.getText().toString();
-
-            auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(
-                                        RegisterActivity.this,
-                                        "User created!",
-                                        Toast.LENGTH_SHORT).show();
-                                //Success
-                                // Navigate to dashboard
-                            } else {
-                                Toast.makeText(
-                                        RegisterActivity.this,
-                                        task.getException().getLocalizedMessage().toString(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+            registerNewUserWithCredentials(email, password);
         });
+    }
+
+    private void registerNewUserWithCredentials(String email, String password) {
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(RegisterActivity.this, DashboardActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(
+                                    RegisterActivity.this,
+                                    task.getException().getLocalizedMessage().toString(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
