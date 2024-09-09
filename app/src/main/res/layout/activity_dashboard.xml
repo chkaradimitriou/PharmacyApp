@@ -53,9 +53,9 @@
             android:layout_height="80dp"
             android:layout_margin="20dp"
             android:setUserImage="@{user.userImg}"
-            tools:src="@mipmap/ic_launcher"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cartTxtView" />
+            app:layout_constraintTop_toBottomOf="@id/cartTxtView"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/greetingTxtView"
@@ -73,13 +73,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:setUserInfo="@{user.username}"
             android:textSize="18sp"
             android:textStyle="italic"
-            android:setUserInfo="@{user.username}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/greetingTxtView"
             app:layout_constraintTop_toBottomOf="@id/greetingTxtView"
             tools:text="username" />
+
+        <TextView
+            android:id="@+id/productsTitleTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Products"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/userImgView"
+            app:layout_constraintTop_toBottomOf="@id/userImgView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productsTitleTxtView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

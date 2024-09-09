@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PharmacyApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.productdetails.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity

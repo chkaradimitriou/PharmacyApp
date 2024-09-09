@@ -8,9 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ckaradimitriou.pharmacyapp.adapters.products.ProductClickListener;
+import com.ckaradimitriou.pharmacyapp.adapters.products.ProductListAdapter;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityDashboardBinding;
+import com.ckaradimitriou.pharmacyapp.model.Product;
 import com.ckaradimitriou.pharmacyapp.model.User;
 import com.ckaradimitriou.pharmacyapp.ui.cart.CartActivity;
+import com.ckaradimitriou.pharmacyapp.ui.productdetails.ProductDetailsActivity;
 import com.ckaradimitriou.pharmacyapp.ui.profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,14 +23,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity implements ProductClickListener {
 
     private ActivityDashboardBinding binding;
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
+    private ProductListAdapter adapter = new ProductListAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,10 @@ public class DashboardActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        binding.productsRecyclerView.setAdapter(adapter);
+
         getUsername();
+        getProductsFromDatabase();
 
         binding.cartImgView.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, CartActivity.class);
@@ -96,5 +105,42 @@ public class DashboardActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void getProductsFromDatabase() {
+        firestore.collection("products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    ArrayList<Product> products = new ArrayList<>();
+
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Map<String, Object> data = document.getData();
+                        Product product = new Product(
+                                data.get("productId").toString(),
+                                data.get("productName").toString(),
+                                data.get("productDescription").toString(),
+                                data.get("productImg").toString(),
+                                Double.valueOf(data.get("productPrice").toString())
+                        );
+                        products.add(product);
+                    }
+
+                    adapter.submitList(products);
+                } else {
+                    Toast.makeText(
+                            DashboardActivity.this,
+                            task.getException().getLocalizedMessage().toString(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onProductClick(Product product) {
+        Intent intent = new Intent(DashboardActivity.this, ProductDetailsActivity.class);
+        intent.putExtra("PRODUCT_ID", product.getProductId());
+        startActivity(intent);
     }
 }
