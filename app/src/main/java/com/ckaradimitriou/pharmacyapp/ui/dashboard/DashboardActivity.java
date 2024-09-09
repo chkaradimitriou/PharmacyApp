@@ -4,35 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.ckaradimitriou.pharmacyapp.adapters.products.ProductClickListener;
 import com.ckaradimitriou.pharmacyapp.adapters.products.ProductListAdapter;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityDashboardBinding;
 import com.ckaradimitriou.pharmacyapp.model.Product;
-import com.ckaradimitriou.pharmacyapp.model.User;
 import com.ckaradimitriou.pharmacyapp.ui.cart.CartActivity;
 import com.ckaradimitriou.pharmacyapp.ui.productdetails.ProductDetailsActivity;
 import com.ckaradimitriou.pharmacyapp.ui.profile.ProfileActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
+import com.google.gson.Gson;
 
 public class DashboardActivity extends AppCompatActivity implements ProductClickListener {
 
     private ActivityDashboardBinding binding;
-    private FirebaseAuth auth;
-    private FirebaseFirestore firestore;
+    private DashboardViewModel viewModel;
     private ProductListAdapter adapter = new ProductListAdapter(this);
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +35,11 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        auth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
+        viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+
+        viewModel.init();
 
         binding.productsRecyclerView.setAdapter(adapter);
-
-        getUsername();
-        getProductsFromDatabase();
 
         binding.cartImgView.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, CartActivity.class);
@@ -77,62 +65,26 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
             Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
             startActivity(intent);
         });
-    }
 
-    private void getUsername() {
-        String userId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
-        firestore.collection("users")
-                .whereEqualTo("userId", userId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, Object> data = document.getData();
-                                String userId = data.get("userId").toString();
-                                String email = data.get("email").toString();
-                                String username = data.get("username").toString();
-                                String userImg = data.get("userImg").toString();
-                                User user = new User(userId, email, username, userImg);
-                                binding.setUser(user);
-                            }
-                        } else {
-                            Toast.makeText(
-                                    DashboardActivity.this,
-                                    task.getException().getLocalizedMessage().toString(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+        viewModel.user.observe(this, user -> {
+            if (user != null) {
+                binding.setUser(user);
+            } else {
+                Toast.makeText(
+                        this,
+                        "User not found",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
-    private void getProductsFromDatabase() {
-        firestore.collection("products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    ArrayList<Product> products = new ArrayList<>();
-
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Map<String, Object> data = document.getData();
-                        Product product = new Product(
-                                data.get("productId").toString(),
-                                data.get("productName").toString(),
-                                data.get("productDescription").toString(),
-                                data.get("productImg").toString(),
-                                Double.valueOf(data.get("productPrice").toString())
-                        );
-                        products.add(product);
-                    }
-
-                    adapter.submitList(products);
-                } else {
-                    Toast.makeText(
-                            DashboardActivity.this,
-                            task.getException().getLocalizedMessage().toString(),
-                            Toast.LENGTH_SHORT).show();
-                }
+        viewModel.products.observe(this, products -> {
+            if (products != null) {
+                adapter.submitList(products);
+            } else {
+                Toast.makeText(
+                        this,
+                        "Products not found",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -140,7 +92,8 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
     @Override
     public void onProductClick(Product product) {
         Intent intent = new Intent(DashboardActivity.this, ProductDetailsActivity.class);
-        intent.putExtra("PRODUCT_ID", product.getProductId());
+        String jsonProduct = gson.toJson(product);
+        intent.putExtra("PRODUCT", jsonProduct);
         startActivity(intent);
     }
 }

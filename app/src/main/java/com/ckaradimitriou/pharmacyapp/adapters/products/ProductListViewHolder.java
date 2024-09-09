@@ -19,7 +19,7 @@ public class ProductListViewHolder extends RecyclerView.ViewHolder {
     public void show(Product product) {
         binding.setProduct(product);
 
-        binding.productNameTxtView.setOnClickListener(view -> {
+        binding.nameConstraint.setOnClickListener(view -> {
             listener.onProductClick(product);
         });
     }

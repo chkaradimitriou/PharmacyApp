@@ -11,18 +11,44 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nameConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="4dp">
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/productImgView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:setProductImage="@{product.productImg}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/productNameTxtView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:setProductInfo="@{product.productName}"
+            android:textStyle="bold"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImgView"
             tools:text="My Product Name" />
+
+        <TextView
+            android:id="@+id/productPriceTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:setProductPrice="@{product.productPrice}"
+            app:layout_constraintStart_toStartOf="@id/productNameTxtView"
+            app:layout_constraintTop_toBottomOf="@id/productNameTxtView"
+            tools:text="30.32€" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
