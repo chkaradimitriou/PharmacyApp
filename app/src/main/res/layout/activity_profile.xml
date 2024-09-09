@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.ProfileActivity">
+
+        <TextView
+            android:id="@+id/profileTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/my_profile"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/profileImgView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileTxtView" />
+
+        <TextView
+            android:id="@+id/usernameTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileImgView"
+            tools:text="@string/username" />
+
+        <TextView
+            android:id="@+id/userIdTxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@id/usernameTxtView"
+            app:layout_constraintStart_toStartOf="@id/usernameTxtView"
+            app:layout_constraintTop_toBottomOf="@id/usernameTxtView"
+            tools:text="@string/user_id" />
+
+        <TextView
+            android:id="@+id/userEmailTxtView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@id/userIdTxtView"
+            app:layout_constraintStart_toStartOf="@id/userIdTxtView"
+            app:layout_constraintTop_toBottomOf="@id/userIdTxtView"
+            tools:text="@string/email" />
+
+        <Button
+            android:id="@+id/logOutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/log_out"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userEmailTxtView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

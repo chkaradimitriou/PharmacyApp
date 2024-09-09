@@ -1,4 +1,4 @@
-package com.ckaradimitriou.pharmacyapp.ui.dashboard;
+package com.ckaradimitriou.pharmacyapp.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ckaradimitriou.pharmacyapp.databinding.ActivityDashboardBinding;
+import com.ckaradimitriou.pharmacyapp.databinding.ActivityProfileBinding;
 import com.ckaradimitriou.pharmacyapp.model.User;
-import com.ckaradimitriou.pharmacyapp.ui.cart.CartActivity;
-import com.ckaradimitriou.pharmacyapp.ui.profile.ProfileActivity;
+import com.ckaradimitriou.pharmacyapp.ui.dashboard.DashboardActivity;
+import com.ckaradimitriou.pharmacyapp.ui.login.LoginActivity;
+import com.ckaradimitriou.pharmacyapp.ui.splash.SplashActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,16 +23,16 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Map;
 import java.util.Objects;
 
-public class DashboardActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
-    private ActivityDashboardBinding binding;
+    private ActivityProfileBinding binding;
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDashboardBinding.inflate(getLayoutInflater());
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
@@ -42,35 +43,17 @@ public class DashboardActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
-        getUsername();
+        getUserInformation();
 
-        binding.cartImgView.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
-
-        binding.cartTxtView.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
-
-        binding.userImgView.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
-
-        binding.greetingTxtView.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
-
-        binding.usernameTxtView.setOnClickListener(view -> {
-            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+        binding.logOutBtn.setOnClickListener(view -> {
+            auth.signOut();
+            Intent intent = new Intent(ProfileActivity.this, SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
     }
 
-    private void getUsername() {
+    private void getUserInformation() {
         String userId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
         firestore.collection("users")
                 .whereEqualTo("userId", userId)
@@ -87,11 +70,13 @@ public class DashboardActivity extends AppCompatActivity {
                                 String userImg = data.get("userImg").toString();
                                 User user = new User(userId, email, username, userImg);
 
+                                binding.userEmailTxtView.setText(user.getEmail());
+                                binding.userIdTxtView.setText(user.getUserId());
                                 binding.usernameTxtView.setText(user.getUsername());
                             }
                         } else {
                             Toast.makeText(
-                                    DashboardActivity.this,
+                                    ProfileActivity.this,
                                     task.getException().getLocalizedMessage().toString(),
                                     Toast.LENGTH_SHORT).show();
                         }

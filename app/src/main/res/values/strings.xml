@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pharmacy App</string>
+    <string name="username">Username:</string>
+    <string name="my_profile">My Profile</string>
+    <string name="user_id">User ID:</string>
+    <string name="email">Email:</string>
+    <string name="log_out">Log Out</string>
 </resources>
