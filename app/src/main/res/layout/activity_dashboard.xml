@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.ckaradimitriou.pharmacyapp.model.User" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -13,7 +20,7 @@
             android:id="@+id/cartTitleTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="20dp"
             android:text="Dashboard"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -40,12 +47,13 @@
             app:layout_constraintStart_toStartOf="@id/cartImgView"
             app:layout_constraintTop_toBottomOf="@+id/cartImgView" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userImgView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_margin="20dp"
-            android:src="@mipmap/ic_launcher"
+            android:setUserImage="@{user.userImg}"
+            tools:src="@mipmap/ic_launcher"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cartTxtView" />
 
@@ -53,7 +61,7 @@
             android:id="@+id/greetingTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="10dp"
             android:text="Welcome,"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -67,6 +75,7 @@
             android:layout_marginEnd="10dp"
             android:textSize="18sp"
             android:textStyle="italic"
+            android:setUserInfo="@{user.username}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/greetingTxtView"
             app:layout_constraintTop_toBottomOf="@id/greetingTxtView"

@@ -86,8 +86,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 String username = data.get("username").toString();
                                 String userImg = data.get("userImg").toString();
                                 User user = new User(userId, email, username, userImg);
-
-                                binding.usernameTxtView.setText(user.getUsername());
+                                binding.setUser(user);
                             }
                         } else {
                             Toast.makeText(
