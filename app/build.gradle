@@ -44,6 +44,9 @@ dependencies {
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.authentication
     implementation libs.firebase.firestore
+    
+    implementation libs.circleimageview
+    implementation libs.glide
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

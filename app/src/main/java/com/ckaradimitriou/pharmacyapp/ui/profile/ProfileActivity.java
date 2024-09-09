@@ -69,10 +69,11 @@ public class ProfileActivity extends AppCompatActivity {
                                 String username = data.get("username").toString();
                                 String userImg = data.get("userImg").toString();
                                 User user = new User(userId, email, username, userImg);
+//                                binding.userEmailTxtView.setText(user.getEmail());
+//                                binding.userIdTxtView.setText(user.getUserId());
+//                                binding.usernameTxtView.setText(user.getUsername());
 
-                                binding.userEmailTxtView.setText(user.getEmail());
-                                binding.userIdTxtView.setText(user.getUserId());
-                                binding.usernameTxtView.setText(user.getUsername());
+                                binding.setUser(user);
                             }
                         } else {
                             Toast.makeText(

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.ckaradimitriou.pharmacyapp.model.User" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -20,15 +27,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImgView"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="50dp"
-            android:src="@mipmap/ic_launcher"
+            android:setUserImage="@{user.userImg}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileTxtView" />
+            app:layout_constraintTop_toBottomOf="@id/profileTxtView"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/usernameTxtView"
@@ -37,6 +45,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
+            android:setUserInfo="@{user.username}"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:setUserInfo="@{user.userId}"
             android:textSize="16sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@id/usernameTxtView"
@@ -61,6 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:setUserInfo="@{user.email}"
             android:textSize="16sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@id/userIdTxtView"
