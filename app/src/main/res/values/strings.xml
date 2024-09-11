@@ -17,17 +17,30 @@
     <string name="create_account">Create Account</string>
     <string name="register_error_message">User has not been created. Try again</string>
 
+    <!-- Login Screen-->
+    <string name="login_error_message">Wrong Credentials. Try again</string>
+
+
     <!-- Product Details Screen-->
     <string name="product_details">Product Details</string>
+    <string name="remove_button_text">Remove from Cart</string>
+    <string name="add_button_text">Add to Cart</string>
+    <string name="add_snackbar_text">The product was added to cart successfully!</string>
+    <string name="remove_snackbar_text">The product was removed from cart successfully!</string>
+
 
     <!-- Profile Screen-->
     <string name="edit_username">Edit Username</string>
+    <string name="profile_error_message">User details not found.</string>
+
 
     <!-- Dashboard Screen-->
     <string name="dashboard">Dashboard</string>
     <string name="cart">Cart</string>
     <string name="welcome">Welcome,</string>
     <string name="products">Products</string>
+    <string name="user_error_message">User not found</string>
+    <string name="products_error_message">Products not found</string>
 
     <!-- Cart Screen-->
     <string name="my_cart">My Cart</string>
@@ -37,6 +50,8 @@
     <string name="username_description">Please enter the new Username</string>
     <string name="username_input_hint">Username</string>
     <string name="edit_username_btn">Save</string>
+    <string name="edit_username_snackbar_save">Your new username was saved successfully</string>
+    <string name="edit_username_snackbar_error_message">An error occured. Please try again.</string>
 
 
 

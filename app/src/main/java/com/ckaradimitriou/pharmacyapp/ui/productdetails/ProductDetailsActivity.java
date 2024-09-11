@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityProductDetailsBinding;
 import com.ckaradimitriou.pharmacyapp.model.Product;
 import com.google.gson.Gson;
@@ -45,18 +46,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         viewModel.isAddedToCart.observe(this, existsInCart -> {
             if (existsInCart) {
-                binding.setButtonText("Remove from Cart");
+                binding.setButtonText(getString(R.string.remove_button_text));
             } else {
-                binding.setButtonText("Add to Cart");
+                binding.setButtonText(getString(R.string.add_button_text));
             }
         });
 
         viewModel.productAddedToCart.observe(this, productAddedToCart -> {
             String snackBarText;
             if (productAddedToCart) {
-                snackBarText = "The product was added to cart successfully!";
+                snackBarText = (getString(R.string.add_snackbar_text));
             } else {
-                snackBarText = "The product was removed from cart successfully!";
+                snackBarText = (getString(R.string.remove_snackbar_text));
             }
 
             Snacky.builder()

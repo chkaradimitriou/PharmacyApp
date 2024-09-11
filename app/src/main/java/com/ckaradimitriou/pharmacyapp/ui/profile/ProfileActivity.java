@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityProfileBinding;
 import com.ckaradimitriou.pharmacyapp.ui.editusername.EditUsernameActivity;
 import com.ckaradimitriou.pharmacyapp.ui.splash.SplashActivity;
@@ -49,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(
                         ProfileActivity.this,
-                        "User details not found.",
+                        getString(R.string.profile_error_message),
                         Toast.LENGTH_SHORT).show();
             }
         });

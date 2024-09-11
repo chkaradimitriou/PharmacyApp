@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.adapters.products.ProductClickListener;
 import com.ckaradimitriou.pharmacyapp.adapters.products.ProductListAdapter;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityDashboardBinding;
@@ -70,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
             } else {
                 Toast.makeText(
                         this,
-                        "User not found",
+                        (getString(R.string.user_error_message)),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,7 +82,7 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
             } else {
                 Toast.makeText(
                         this,
-                        "Products not found",
+                        (getString(R.string.products_error_message)),
                         Toast.LENGTH_SHORT).show();
             }
         });

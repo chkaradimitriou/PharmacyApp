@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityLoginBinding;
 import com.ckaradimitriou.pharmacyapp.ui.dashboard.DashboardActivity;
 
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(
                         this,
-                        "Wrong Credentials. Try again",
+                        (getString(R.string.login_error_message)),
                         Toast.LENGTH_SHORT).show();
             }
         });

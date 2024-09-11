@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityEditUsernameBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -41,9 +42,9 @@ public class EditUsernameActivity extends AppCompatActivity {
                     .setDuration(Snacky.LENGTH_LONG);
 
             if (usernameIsUpdated) {
-                snackbar.setText("Your new username was saved successfully").show();
+                snackbar.setText(getString(R.string.edit_username_snackbar_save)).show();
             } else {
-                snackbar.setText("An error occured. Please try again.").show();
+                snackbar.setText(getString(R.string.edit_username_snackbar_error_message)).show();
             }
         });
     }
