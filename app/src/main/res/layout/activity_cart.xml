@@ -2,7 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
+        <variable
+            name="orderTotalAmount"
+            type="Double" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -21,36 +26,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/cartImgView"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_margin="20dp"-->
-<!--            android:src="@mipmap/ic_launcher"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/cartTitleTxtView" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/cartDetailsTxtView"
+            app:layout_constraintTop_toBottomOf="@id/cartTitleTxtView" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/cartProductTitleTxtView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="16dp"-->
-<!--            android:text="Product Title"-->
-<!--            android:textSize="22sp"-->
-<!--            app:layout_constraintStart_toEndOf="@id/cartImgView"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/cartTitleTxtView" />-->
+        <TextView
+            android:id="@+id/cartDetailsTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:setOrderTotalAmount="@{orderTotalAmount}"
+            app:layout_constraintBottom_toTopOf="@id/cartOrderBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/cartTxtView"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:text="description"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textStyle="italic"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="@id/cartProductTitleTxtView"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/cartProductTitleTxtView" />-->
+        <Button
+            android:id="@+id/cartOrderBtn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_margin="20dp"
+            android:text="Order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -71,4 +71,13 @@ public class BindingAdapters {
             img.setImageResource(R.drawable.empty_user_img);
         }
     }
+
+    @BindingAdapter("android:setOrderTotalAmount")
+    public static void setOrderTotalAmount(TextView txtView, Double totalAmount) {
+        if (totalAmount != null && totalAmount > 0) {
+            txtView.setText("Your total amount is " + totalAmount + "€");
+        } else {
+            txtView.setText("Your total amount is 0€");
+        }
+    }
 }
