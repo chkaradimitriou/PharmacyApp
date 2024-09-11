@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityProfileBinding;
+import com.ckaradimitriou.pharmacyapp.ui.editusername.EditUsernameActivity;
 import com.ckaradimitriou.pharmacyapp.ui.splash.SplashActivity;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -30,7 +31,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
-        viewModel.getUserInfo();
+        binding.editUsernameBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, EditUsernameActivity.class);
+            startActivity(intent);
+        });
 
         binding.logOutBtn.setOnClickListener(view -> {
             viewModel.logoutUser();
@@ -49,5 +53,11 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.getUserInfo();
     }
 }

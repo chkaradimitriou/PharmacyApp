@@ -19,16 +19,15 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
+        android:padding="@dimen/dimen_20"
         tools:context=".ui.productdetails.ProductDetailsActivity">
 
         <TextView
             android:id="@+id/productTitleTxtView"
+            style="@style/headline_2_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Product Details"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:text="@string/product_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,8 +35,8 @@
         <ImageView
             android:id="@+id/productImgView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/dimen_350"
+            android:layout_marginTop="@dimen/dimen_20"
             android:scaleType="centerCrop"
             android:setProductImage="@{product.productImg}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,21 +48,20 @@
             android:id="@+id/productIdTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/dimen_16"
             android:setProductId="@{product.productId}"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productImgView"
             tools:text="Product Id" />
 
         <TextView
             android:id="@+id/productNameTxtView"
+            style="@style/headline_3_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dimen_10"
             android:setProductInfo="@{product.productName}"
-            android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productIdTxtView"
@@ -73,21 +71,21 @@
             android:id="@+id/productPriceTxtView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/dimen_4"
             android:setProductPrice="@{product.productPrice}"
-            tools:text="30.32€"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productNameTxtView" />
+            app:layout_constraintTop_toBottomOf="@id/productNameTxtView"
+            tools:text="30.32€" />
 
         <TextView
             android:id="@+id/productDescriptionTxtView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dimen_8"
             android:setProductInfo="@{product.productDescription}"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,11 +95,12 @@
         <Button
             android:id="@+id/addToCartBtn"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dimen_52"
+            android:layout_marginBottom="@dimen/dimen_10"
             android:text="@{buttonText}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Add to Cart" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

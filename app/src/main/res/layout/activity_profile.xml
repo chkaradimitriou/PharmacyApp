@@ -18,20 +18,19 @@
 
         <TextView
             android:id="@+id/profileTxtView"
+            style="@style/headline_2_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/dimen_20"
             android:text="@string/my_profile"
-            android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImgView"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="@dimen/dimen_120"
+            android:layout_height="@dimen/dimen_120"
+            android:layout_marginTop="@dimen/dimen_50"
             android:setUserImage="@{user.userImg}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,14 +39,13 @@
 
         <TextView
             android:id="@+id/usernameTxtView"
+            style="@style/headline_2_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_16"
             android:gravity="center"
             android:setUserInfo="@{user.username}"
-            android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileImgView"
@@ -59,7 +57,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:setUserInfo="@{user.userId}"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@id/usernameTxtView"
             app:layout_constraintStart_toStartOf="@id/usernameTxtView"
@@ -72,22 +70,37 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:setUserInfo="@{user.email}"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@id/userIdTxtView"
             app:layout_constraintStart_toStartOf="@id/userIdTxtView"
             app:layout_constraintTop_toBottomOf="@id/userIdTxtView"
             tools:text="@string/email" />
 
+        <TextView
+            android:id="@+id/editUsernameBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_24"
+            android:layout_marginTop="@dimen/dimen_32"
+            android:background="#efefef"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/edit_username"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/userEmailTxtView"
+            app:layout_constraintTop_toBottomOf="@id/userEmailTxtView" />
+
         <Button
             android:id="@+id/logOutBtn"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="12dp"
+            android:layout_height="@dimen/dimen_52"
+            android:layout_marginHorizontal="@dimen/dimen_24"
+            android:layout_marginBottom="@dimen/dimen_12"
             android:text="@string/log_out"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/userEmailTxtView" />
+            app:layout_constraintStart_toStartOf="@id/editUsernameBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

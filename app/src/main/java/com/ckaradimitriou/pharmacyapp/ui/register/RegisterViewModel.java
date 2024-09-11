@@ -8,7 +8,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -47,10 +46,11 @@ public class RegisterViewModel extends ViewModel {
         user.put("userImg", "");
 
         firestore.collection("users")
-                .add(user)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                .document(userId)
+                .set(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                    public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             userHasBeenCreated.postValue(true);
                         } else {

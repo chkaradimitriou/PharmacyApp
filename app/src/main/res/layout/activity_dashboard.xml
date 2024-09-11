@@ -18,20 +18,19 @@
 
         <TextView
             android:id="@+id/cartTitleTxtView"
+            style="@style/headline_2_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Dashboard"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_margin="@dimen/dimen_20"
+            android:text="@string/dashboard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cartImgView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_margin="@dimen/dimen_20"
             android:src="@drawable/cart_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,17 +40,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Cart"
-            android:textSize="16sp"
+            android:text="@string/cart"
             app:layout_constraintEnd_toEndOf="@id/cartImgView"
             app:layout_constraintStart_toStartOf="@id/cartImgView"
             app:layout_constraintTop_toBottomOf="@+id/cartImgView" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userImgView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
+            android:layout_width="@dimen/dimen_80"
+            android:layout_height="@dimen/dimen_80"
+            android:layout_margin="@dimen/dimen_20"
             android:setUserImage="@{user.userImg}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cartTxtView"
@@ -59,23 +57,21 @@
 
         <TextView
             android:id="@+id/greetingTxtView"
+            style="@style/headline_2_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Welcome,"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_margin="@dimen/dimen_10"
+            android:text="@string/welcome"
             app:layout_constraintStart_toEndOf="@id/userImgView"
             app:layout_constraintTop_toTopOf="@id/userImgView" />
 
         <TextView
             android:id="@+id/usernameTxtView"
+            style="@style/headline_4_italic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/dimen_10"
             android:setUserInfo="@{user.username}"
-            android:textSize="18sp"
-            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/greetingTxtView"
             app:layout_constraintTop_toBottomOf="@id/greetingTxtView"
@@ -83,12 +79,11 @@
 
         <TextView
             android:id="@+id/productsTitleTxtView"
+            style="@style/headline_4_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Products"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="@string/products"
             app:layout_constraintStart_toStartOf="@id/userImgView"
             app:layout_constraintTop_toBottomOf="@id/userImgView" />
 
@@ -96,13 +91,13 @@
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_8"
             android:orientation="vertical"
-            app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productsTitleTxtView" />
+            app:layout_constraintTop_toBottomOf="@id/productsTitleTxtView"
+            app:spanCount="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

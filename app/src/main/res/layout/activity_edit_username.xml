@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:padding="@dimen/dimen_20"
+        android:layout_height="match_parent"
+        tools:context=".ui.editusername.EditUsernameActivity">
+
+        <TextView
+            android:id="@+id/editUsernameTxtView"
+            style="@style/headline_2_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_username"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/editUsernameTxtView" />
+
+        <TextView
+            android:id="@+id/editUsernameTitleTxtView"
+            style="@style/headline_4_italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/username_description"
+            android:layout_marginTop="@dimen/dimen_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editUsernameTxtView" />
+
+        <EditText
+            android:id="@+id/editNewUsernameTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username_input_hint"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/dimen_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editUsernameTitleTxtView" />
+
+        <Button
+            android:id="@+id/editUsernameBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_52"
+            android:layout_marginBottom="@dimen/dimen_12"
+            android:text="@string/edit_username_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

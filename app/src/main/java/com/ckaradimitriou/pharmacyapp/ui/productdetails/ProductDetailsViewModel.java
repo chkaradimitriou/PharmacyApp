@@ -22,7 +22,8 @@ public class ProductDetailsViewModel extends ViewModel {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private String userId = Objects.requireNonNull(auth.getCurrentUser().getUid());
 
-    MutableLiveData<Boolean> isAddedToCart = new MutableLiveData<>(false);
+    MutableLiveData<Boolean> isAddedToCart = new MutableLiveData<>();
+    MutableLiveData<Boolean> productAddedToCart = new MutableLiveData<>();
     private ArrayList<Product> tempProductList = new ArrayList<>();
 
     void onAddToCartBtnClick(Product product) {
@@ -82,6 +83,7 @@ public class ProductDetailsViewModel extends ViewModel {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        productAddedToCart.postValue(true);
                         checkIfProductExistsInCart(product);
                     }
                 });
@@ -98,6 +100,7 @@ public class ProductDetailsViewModel extends ViewModel {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        productAddedToCart.postValue(false);
                         checkIfProductExistsInCart(product);
                     }
                 });

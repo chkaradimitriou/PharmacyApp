@@ -48,6 +48,7 @@ dependencies {
     implementation libs.circleimageview
     implementation libs.glide
     implementation libs.gson
+    implementation libs.snacky
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

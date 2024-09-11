@@ -10,6 +10,8 @@ import com.ckaradimitriou.pharmacyapp.databinding.ActivityProductDetailsBinding;
 import com.ckaradimitriou.pharmacyapp.model.Product;
 import com.google.gson.Gson;
 
+import de.mateware.snacky.Snacky;
+
 public class ProductDetailsActivity extends AppCompatActivity {
 
     private ActivityProductDetailsBinding binding;
@@ -47,6 +49,22 @@ public class ProductDetailsActivity extends AppCompatActivity {
             } else {
                 binding.setButtonText("Add to Cart");
             }
+        });
+
+        viewModel.productAddedToCart.observe(this, productAddedToCart -> {
+            String snackBarText;
+            if (productAddedToCart) {
+                snackBarText = "The product was added to cart successfully!";
+            } else {
+                snackBarText = "The product was removed from cart successfully!";
+            }
+
+            Snacky.builder()
+                    .setActivity(ProductDetailsActivity.this)
+                    .setText(snackBarText)
+                    .success()
+                    .setDuration(Snacky.LENGTH_LONG)
+                    .show();
         });
     }
 }

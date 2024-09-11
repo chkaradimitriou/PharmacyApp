@@ -37,8 +37,6 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
 
         viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
 
-        viewModel.init();
-
         binding.productsRecyclerView.setAdapter(adapter);
 
         binding.cartImgView.setOnClickListener(view -> {
@@ -87,6 +85,12 @@ public class DashboardActivity extends AppCompatActivity implements ProductClick
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.getDashboardInformation();
     }
 
     @Override

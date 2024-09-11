@@ -20,16 +20,13 @@ import java.util.Objects;
 
 public class DashboardViewModel extends ViewModel {
 
-    private FirebaseAuth auth;
-    private FirebaseFirestore firestore;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     public MutableLiveData<User> user = new MutableLiveData<>();
     public MutableLiveData<List<Product>> products = new MutableLiveData<>();
 
-    public void init() {
-        auth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
-
+    void getDashboardInformation() {
         getUsername();
         getProductsFromDatabase();
     }

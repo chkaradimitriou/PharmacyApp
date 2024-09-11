@@ -14,12 +14,12 @@
         android:id="@+id/nameConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:padding="@dimen/dimen_4">
 
         <ImageView
             android:id="@+id/productImgView"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/dimen_120"
+            android:layout_height="@dimen/dimen_120"
             android:scaleType="centerCrop"
             android:setProductImage="@{product.productImg}"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,14 +28,13 @@
 
         <TextView
             android:id="@+id/productNameTxtView"
+            style="@style/headline_4_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/dimen_20"
             android:ellipsize="end"
             android:maxLines="2"
             android:setProductInfo="@{product.productName}"
-            android:textStyle="bold"
-            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productImgView"
             tools:text="My Product Name" />
@@ -44,7 +43,7 @@
             android:id="@+id/productPriceTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/dimen_4"
             android:setProductPrice="@{product.productPrice}"
             app:layout_constraintStart_toStartOf="@id/productNameTxtView"
             app:layout_constraintTop_toBottomOf="@id/productNameTxtView"
