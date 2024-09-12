@@ -13,9 +13,11 @@
     <!-- Register Screen-->
     <string name="email_input_hint">Please type your e-mail</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="password_input_hint">Please type your password</string>
     <string name="create_account">Create Account</string>
     <string name="register_error_message">User has not been created. Try again</string>
+    <string name="register_password_error_message">Your passwords do not match.</string>
 
     <!-- Login Screen-->
     <string name="login_error_message">Wrong Credentials. Try again</string>

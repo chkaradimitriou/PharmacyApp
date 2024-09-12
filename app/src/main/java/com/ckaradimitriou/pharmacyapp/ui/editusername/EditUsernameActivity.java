@@ -30,9 +30,16 @@ public class EditUsernameActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(EditUsernameViewModel.class);
 
+        viewModel.getUserInfo();
+
         binding.editUsernameBtn.setOnClickListener(view -> {
             String username = binding.editNewUsernameTxtView.getText().toString();
             viewModel.updateUsername(username);
+        });
+
+        viewModel.username.observe(this, username -> {
+            binding.editNewUsernameTxtView.setText(username);
+            binding.editNewUsernameTxtView.setSelection(username.length());
         });
 
         viewModel.usernameUpdated.observe(this, usernameIsUpdated -> {

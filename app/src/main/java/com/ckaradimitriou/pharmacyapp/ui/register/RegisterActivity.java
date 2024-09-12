@@ -33,7 +33,15 @@ public class RegisterActivity extends AppCompatActivity {
         binding.createAccountBtn.setOnClickListener(view -> {
             String email = binding.emailEditTxt.getText().toString();
             String password = binding.passwordEditTxt.getText().toString();
-            viewModel.registerNewUserWithCredentials(email, password);
+            String confirmPassword = binding.confirmPasswordEditTxt.getText().toString();
+
+            if (password.equals(confirmPassword)) {
+                viewModel.registerNewUserWithCredentials(email, password);
+            } else {
+                Toast.makeText(this,
+                        getString(R.string.register_password_error_message),
+                        Toast.LENGTH_SHORT).show();
+            }
         });
 
         viewModel.userHasBeenCreated.observe(this, userHasBeenCreated -> {
