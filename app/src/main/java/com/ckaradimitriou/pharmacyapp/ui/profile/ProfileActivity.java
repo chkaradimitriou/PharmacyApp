@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.ckaradimitriou.pharmacyapp.R;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityProfileBinding;
 import com.ckaradimitriou.pharmacyapp.ui.editusername.EditUsernameActivity;
+import com.ckaradimitriou.pharmacyapp.ui.orders.OrdersActivity;
 import com.ckaradimitriou.pharmacyapp.ui.splash.SplashActivity;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -31,6 +32,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
+        binding.myOrdersBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, OrdersActivity.class);
+            startActivity(intent);
+        });
 
         binding.editUsernameBtn.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileActivity.this, EditUsernameActivity.class);

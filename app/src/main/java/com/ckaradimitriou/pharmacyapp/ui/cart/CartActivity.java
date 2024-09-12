@@ -11,6 +11,7 @@ import com.ckaradimitriou.pharmacyapp.adapters.products.ProductClickListener;
 import com.ckaradimitriou.pharmacyapp.adapters.products.ProductListAdapter;
 import com.ckaradimitriou.pharmacyapp.databinding.ActivityCartBinding;
 import com.ckaradimitriou.pharmacyapp.model.Product;
+import com.ckaradimitriou.pharmacyapp.ui.orderaddress.OrderAddressActivity;
 import com.ckaradimitriou.pharmacyapp.ui.productdetails.ProductDetailsActivity;
 import com.google.gson.Gson;
 
@@ -35,6 +36,13 @@ public class CartActivity extends AppCompatActivity implements ProductClickListe
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
 
         binding.productsRecyclerView.setAdapter(adapter);
+
+        binding.cartOrderBtn.setOnClickListener(view -> {
+            String products = gson.toJson(viewModel.products.getValue());
+            Intent intent = new Intent(CartActivity.this, OrderAddressActivity.class);
+            intent.putExtra("PRODUCTS", products);
+            startActivity(intent);
+        });
 
         viewModel.products.observe(this, products -> {
             adapter.submitList(products);

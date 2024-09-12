@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_20"
+        tools:context=".ui.orderaddress.OrderAdressActivity">
+
+        <TextView
+            android:id="@+id/orderTitleTxtView"
+            style="@style/headline_2_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/order_title_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/orderNameTxtView"
+            style="@style/headline_4_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:text="@string/order_full_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderTitleTxtView" />
+
+        <EditText
+            android:id="@+id/orderNameEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:hint="@string/order_full_name"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/orderNameEditTxt"
+            app:layout_constraintTop_toBottomOf="@id/orderNameTxtView" />
+
+        <TextView
+            android:id="@+id/orderAddressTxtView"
+            style="@style/headline_4_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="@string/order_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderNameEditTxt" />
+
+        <EditText
+            android:id="@+id/orderAddressEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:hint="@string/order_address"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/orderAddressTxtView"
+            app:layout_constraintTop_toBottomOf="@id/orderAddressTxtView" />
+
+        <TextView
+            android:id="@+id/orderCityTxtView"
+            style="@style/headline_4_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="@string/order_city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderAddressEditTxt" />
+
+        <EditText
+            android:id="@+id/orderCityEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:hint="@string/order_city"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/orderCityTxtView"
+            app:layout_constraintTop_toBottomOf="@id/orderCityTxtView" />
+
+        <TextView
+            android:id="@+id/orderPostalCodeTxtView"
+            style="@style/headline_4_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="@string/order_postal_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderCityEditTxt" />
+
+        <EditText
+            android:id="@+id/orderPostalCodeEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:hint="@string/order_postal_code"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/orderPostalCodeTxtView"
+            app:layout_constraintTop_toBottomOf="@id/orderPostalCodeTxtView" />
+
+        <TextView
+            android:id="@+id/orderPhoneTxtView"
+            style="@style/headline_4_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="@string/order_phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderPostalCodeEditTxt" />
+
+        <EditText
+            android:id="@+id/orderPhoneEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:hint="@string/order_phone_number"
+            android:textSize="@dimen/text_18"
+            app:layout_constraintStart_toStartOf="@id/orderPhoneTxtView"
+            app:layout_constraintTop_toBottomOf="@id/orderPhoneTxtView" />
+
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_52"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:text="@string/order_continue_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

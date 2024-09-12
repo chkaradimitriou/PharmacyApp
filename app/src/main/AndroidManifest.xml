@@ -15,6 +15,12 @@
         android:theme="@style/Theme.PharmacyApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.orders.OrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.orderaddress.OrderAddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.editusername.EditUsernameActivity"
             android:exported="false" />
         <activity
