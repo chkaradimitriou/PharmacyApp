@@ -65,6 +65,9 @@
     <string name="order_phone_number">Phone Number</string>
     <string name="order_continue_btn">Continue</string>
 
+    <!-- Order Adress Screen-->
+    <string name="order_details_title">Order Details</string>
+
 
 
 </resources>

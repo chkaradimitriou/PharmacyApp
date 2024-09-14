@@ -8,6 +8,7 @@ import com.ckaradimitriou.pharmacyapp.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -33,7 +34,10 @@ public class OrderAddressViewModel extends ViewModel {
         if (!products.isEmpty()) {
             Double total = products.stream().mapToDouble(o -> o.getProductPrice()).sum();
 
+            DocumentReference documentReference = firestore.collection("orders").document();
+
             Map<String, Object> data = new HashMap<>();
+            data.put("orderId", documentReference.getId());
             data.put("userId", userId);
             data.put("fullName", fullName);
             data.put("address", address);
@@ -43,9 +47,7 @@ public class OrderAddressViewModel extends ViewModel {
             data.put("products", products);
             data.put("orderTotal", total);
 
-            firestore.collection("orders")
-                    .document(userId)
-                    .set(data)
+            documentReference.set(data)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

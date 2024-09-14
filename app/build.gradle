@@ -44,7 +44,8 @@ dependencies {
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.authentication
     implementation libs.firebase.firestore
-    
+    implementation libs.firebase.storage
+
     implementation libs.circleimageview
     implementation libs.glide
     implementation libs.gson

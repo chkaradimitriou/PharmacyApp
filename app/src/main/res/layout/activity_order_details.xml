@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.ckaradimitriou.pharmacyapp.model.Order" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_16">
+
+        <TextView
+            android:id="@+id/orderDetailsTitleTxtView"
+            style="@style/headline_2_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_details_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/orderIdTxtView"
+            style="@style/headline_3_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderDetailsTitleTxtView"
+            app:setOrderId="@{order.orderId}"
+            tools:text="Order: #123456789" />
+
+        <TextView
+            android:id="@+id/orderFullAddressTxtView"
+            style="@style/headline_4_italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:text="@string/order_details_title"
+            app:layout_constraintStart_toStartOf="@id/orderIdTxtView"
+            app:layout_constraintTop_toBottomOf="@id/orderIdTxtView"
+            app:setOrderFullAddress="@{order}"
+            tools:text="Address 1, City, 11111" />
+
+        <TextView
+            android:id="@+id/orderTotalPriceTxtView"
+            style="@style/headline_4_italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:text="@string/order_details_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderFullAddressTxtView"
+            app:setOrderTotal="@{order.products}"
+            tools:text="Total: 99.90€" />
+
+        <TextView
+            android:id="@+id/productsTitleTxtView"
+            style="@style/headline_3_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:text="Products"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderTotalPriceTxtView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productsTitleTxtView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

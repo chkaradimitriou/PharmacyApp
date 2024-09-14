@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ckaradimitriou.pharmacyapp.databinding.ActivityOrderAdressBinding;
+import com.ckaradimitriou.pharmacyapp.databinding.ActivityOrderAddressBinding;
 import com.ckaradimitriou.pharmacyapp.model.Product;
 import com.ckaradimitriou.pharmacyapp.ui.dashboard.DashboardActivity;
 import com.google.gson.Gson;
@@ -20,14 +20,14 @@ import java.util.List;
 
 public class OrderAddressActivity extends AppCompatActivity {
 
-    private ActivityOrderAdressBinding binding;
+    private ActivityOrderAddressBinding binding;
     private OrderAddressViewModel viewModel;
     private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityOrderAdressBinding.inflate(getLayoutInflater());
+        binding = ActivityOrderAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
